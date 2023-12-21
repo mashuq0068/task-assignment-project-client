@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 
 const Navbar = () => {
+    const {user , logOutUser} = useContext(AuthContext)
     const links = 
     <>
     <ul className=" flex lg:flex-row 2xl:text-lg flex-col gap-[6vw]">
@@ -10,6 +13,16 @@ const Navbar = () => {
        <NavLink to='/faq'>Faq</NavLink>
     </ul>
     </>
+    const handleLogout = () => {
+      logOutUser()
+      .then(res => {
+         console.log(res) 
+          
+      })
+      .catch((error) => {
+        console.error(error.message)
+      })
+    }
     return (
         <div className="sticky top-0 z-50">
             <div className="navbar  drop-shadow-xl shadow-lg  bg-base-100">
@@ -30,7 +43,11 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to='/login' className="btn 2xl:text-base ">Login</Link>
+    {
+     !user ?   <Link to='/login' className="btn 2xl:text-base ">Login</Link> :
+        <button onClick={handleLogout}  className="btn 2xl:text-base ">Logout</button>
+        
+        }
   </div>
 </div>
         </div>

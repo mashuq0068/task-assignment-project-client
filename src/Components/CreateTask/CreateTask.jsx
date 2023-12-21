@@ -1,8 +1,14 @@
 // CreateTaskForm.js
 
 import { useForm } from 'react-hook-form';
+import UseAxiosDefault from '../../Hooks/UseAxiosDefault';
+import toast, { Toaster } from 'react-hot-toast';
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const CreateTask = () => {
+  const defaultAxios = UseAxiosDefault()
+  const {user} = useContext(AuthContext)
   const {
     register,
     handleSubmit,
@@ -12,15 +18,31 @@ const CreateTask = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    
+    data.email = user?.email
     console.log('Submitted data:', data);
     setValue('taskTitle', '');
     setValue('taskDescription', '');
     setValue('taskDeadline', '');
     setValue('taskPriority', '');
+    if(data && data.email){
+      defaultAxios.post('/task' , data)
+      .then(res => {
+        console.log(res.data)
+       if(res.data.insertedId){
+        toast.success("you have successfully created a task")
+       }
+      })
+    }
   };
 
   return (
+    <>
+    <Toaster
+    position="top-center"
+    reverseOrder={false}
+    toastOptions={{className:" text-center"}}
+    
+/>
     <div className="max-w-md mx-auto mt-8 p-6 bg-white shadow-md rounded-md">
       <h2 className="text-2xl font-semibold mb-4">Create New Task</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -117,6 +139,7 @@ const CreateTask = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 
