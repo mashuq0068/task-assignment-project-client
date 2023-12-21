@@ -3,7 +3,7 @@ import axios from "axios";
 
 const UseAxiosDefault = () => {
     const defaultAxios = axios.create({
-        baseURL : 'http://localhost:5000'
+        baseURL : 'https://task-server-tan.vercel.app'
 })
     return (
         defaultAxios

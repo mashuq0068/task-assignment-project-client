@@ -10,14 +10,14 @@ const Navbar = () => {
     <ul className=" flex lg:flex-row 2xl:text-lg flex-col gap-[6vw]">
        <NavLink to='/'>Home</NavLink>
        <NavLink to='/dashboard'>Dashboard</NavLink>
-       <NavLink to='/faq'>Faq</NavLink>
+       <NavLink to='/aboutUs'>About us</NavLink>
     </ul>
     </>
     const handleLogout = () => {
       logOutUser()
       .then(res => {
          console.log(res) 
-          
+
       })
       .catch((error) => {
         console.error(error.message)

@@ -6,6 +6,8 @@ import LoginPage from "../Pages/LoginPage/LoginPage";
 import DashboardPage from "../Pages/DashboardPage/DashboardPage";
 import CreateTaskPage from "../Pages/CreateTaskPage/CreateTaskPage";
 import PrivateRoute from "./PrivateRoute";
+import DetailsPage from "../Pages/DetailsPage/DetailsPage";
+import AboutUsPage from "../Pages/AboutUsPage/AboutUsPage";
 
 export const router = createBrowserRouter([
     
@@ -32,6 +34,14 @@ export const router = createBrowserRouter([
     {
         path:'/createTask',
         element:<CreateTaskPage></CreateTaskPage>
+    },
+    {
+        path:'/details/:id',
+        element:<DetailsPage></DetailsPage>
+    },
+    {
+        path:'/aboutUs',
+        element:<AboutUsPage></AboutUsPage>
     }
         
    
