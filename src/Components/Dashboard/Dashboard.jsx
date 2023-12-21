@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import useTasks from "../../Hooks/UseTasks";
+import Draggable from "react-draggable";
+import { Droppable } from "react-beautiful-dnd";
 
 
 const Dashboard = () => {
@@ -17,13 +19,17 @@ const Dashboard = () => {
             tasks?.map(task => 
                
                
-            <div className=" grid px-[2%] py-[1%] rounded-lg border border-gray-300 grid-cols-3 " key={task._id}>
+          
+             <Draggable key={task?._id}>
+                <div className=" grid px-[2%] py-[1%] rounded-lg border border-gray-300 grid-cols-3 " key={task._id}>
                 <p>{task?.taskTitle?.slice(0,6)}</p>
                 <button className="btn btn-ghost">See Details</button>
                 <button className="btn btn-ghost">Delete</button>
                
             </div>
           
+            </Draggable>
+        
             )
             }
             </div>
@@ -35,14 +41,14 @@ const Dashboard = () => {
            {
             tasks?.map(task => 
                
-               
+             <Draggable key={task?._id}>
             <div className=" grid px-[2%] py-[1%] rounded-lg border border-gray-300 grid-cols-3 " key={task._id}>
                 <p>{task?.taskTitle?.slice(0,6)}</p>
                 <button className="btn btn-ghost">See Details</button>
                 <button className="btn btn-ghost">Delete</button>
                
             </div>
-          
+            </Draggable>  
             )
             }
             </div>
@@ -54,13 +60,14 @@ const Dashboard = () => {
            {
             tasks?.map(task => 
                
-               
+               <Draggable key={task?._id}>
             <div className=" grid px-[2%] py-[1%] rounded-lg border border-gray-300 grid-cols-3 " key={task._id}>
                 <p>{task?.taskTitle?.slice(0,6)}</p>
                 <button className="btn btn-ghost">See Details</button>
                 <button className="btn btn-ghost">Delete</button>
                
             </div>
+            </Draggable>
           
             )
             }
