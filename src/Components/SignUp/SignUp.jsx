@@ -2,13 +2,15 @@ import { updateProfile } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 
 import toast, { Toaster } from "react-hot-toast";
-import { IoLogoGithub } from "react-icons/io";
+import { IoLogoGithub, IoMdAdd } from "react-icons/io";
 
 import { AiOutlineGoogle } from 'react-icons/ai';
+import { AuthContext } from "../../Providers/AuthProvider"; 
 
 import { useContext } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
+
 import auth from "../../firebase/firebase.config";
+
 
 
 const SignUp = () => {
